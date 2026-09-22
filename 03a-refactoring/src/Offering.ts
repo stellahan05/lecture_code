@@ -42,22 +42,13 @@ export class Offering {
 			this.waitlist.push(customer);
 			if (!customer.interests.includes(this.program.category)) {
 				customer.interests.push(this.program.category);
-				if (customer.interests.length >= 5) {
-					customer.status = "Community Champion";
-				} else if (customer.interests.length >= 3) {
-					customer.status = "Frequent Customer";
-				}
+				customer.recordCategory(this.program.category);
 			}
 			return false;
 		}
 		this.registrations.push(customer);
 		if (!customer.interests.includes(this.program.category)) {
-			customer.interests.push(this.program.category);
-			if (customer.interests.length >= 5) {
-				customer.status = "Community Champion";
-			} else if (customer.interests.length >= 3) {
-				customer.status = "Frequent Customer";
-			}
+			customer.recordCategory(this.program.category);
 		}
 		return true;
 	}

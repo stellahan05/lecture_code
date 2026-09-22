@@ -154,11 +154,7 @@ export function loadPrograms(): Program[] {
 				offering.registrations.push(customer);
 				if (!customer.interests.includes(offering.program.category)) {
 					customer.interests.push(offering.program.category);
-					if (customer.interests.length >= 5) {
-						customer.status = "Community Champion";
-					} else if (customer.interests.length >= 3) {
-						customer.status = "Frequent Customer";
-					}
+					customer.recordCategory(offering.program.category);
 				}
 			}
 		}
@@ -169,11 +165,7 @@ export function loadPrograms(): Program[] {
 				offering.waitlist.push(customer);
 				if (!customer.interests.includes(offering.program.category)) {
 					customer.interests.push(offering.program.category);
-					if (customer.interests.length >= 5) {
-						customer.status = "Community Champion";
-					} else if (customer.interests.length >= 3) {
-						customer.status = "Frequent Customer";
-					}
+					customer.recordCategory(offering.program.category);
 				}
 			}
 		}
