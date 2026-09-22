@@ -1,0 +1,48 @@
+commit d4b8f2a5c1e9037d6a2f8b5c1e4d7a0b3f6c9e2d
+Author: b <a@b>
+Date:   Mon Aug 24 15:36:02 2026 -0700
+
+    FEAT-0002: recognize customers with four interests as Community Enthusiasts
+
+    Marketing wants a tier between Frequent Customer (3 categories) and
+    Community Champion (5): a customer who has tried four of the five
+    categories should be recognized before they round out the set.
+
+    REFACTOR-0002 already gathered every rule relating interests to status
+    into Customer.status, so the new tier is one more threshold there —
+    register(), the waitlist path, and the catalogue seeding loop don't
+    change at all.
+
+    Adds Test 42f to lock in the new tier: a customer with four interests
+    (c03) now reads as a Community Enthusiast. Test 42b is untouched — it
+    already exercises a three-interest customer (c04), which still reads
+    as Frequent Customer under the new thresholds.
+
+diff --git a/src/Customer.ts b/src/Customer.ts
+index ad7ccae..c41f5b2 100644
+--- a/src/Customer.ts
++++ b/src/Customer.ts
+@@ -11,6 +11,7 @@ export class Customer {
+
+ 	public get status(): string {
+ 		if (this.interests.length >= 5) return "Community Champion";
++		if (this.interests.length >= 4) return "Community Enthusiast";
+ 		if (this.interests.length >= 3) return "Frequent Customer";
+ 		return "Default";
+ 	}
+diff --git a/test/parkboard.spec.ts b/test/parkboard.spec.ts
+index 9b3e7a1..7c1d4f9 100644
+--- a/test/parkboard.spec.ts
++++ b/test/parkboard.spec.ts
+@@ -233,6 +233,11 @@ describe("loyalty", () => {
+ 		findOffering("AR-105-A")!.register(customer("c05"));
+ 		expect(customer("c05").interests.length).to.equal(before);
+ 	});
++
++	it("Test 42f: promotes a customer who has taken four", () => {
++		expect(customer("c03").interests).to.have.length(4);
++		expect(customer("c03").status).to.equal("Community Enthusiast");
++	});
+ });
+
+ describe("registering", () => {
