@@ -169,6 +169,11 @@ describe("search", () => {
 	it("Test 33: pads a column", () => {
 		expect(pad("ab", 5)).to.equal("ab   ");
 	});
+
+	it("Test 33b: quotes the price customer will actually be invoiced", () => {
+		const quoted = search("id","is", "FT-110-A", { resident: true })[0];
+		const invoiced = quoted.substring(76, 86).trim();
+		expect(invoiced).to.equal("$115.50");
 });
 
 describe("invoice", () => {

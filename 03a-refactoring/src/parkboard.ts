@@ -1,5 +1,12 @@
 import { Offering } from "./Offering";
 import { loadPrograms, findCentre } from "./catalogue";
+import { QuotePrice } from "./pricing";
+
+// const NON_RESIDENT_SURCHARGE = 1.25;
+// const CONCESSION_RATE = 0.7;
+// const TAX_RATE = 1.05;
+// const CENTS_PER_DOLLAR = 100;
+// const MODERNIZATION_LEVY = 1.02;
 
 /**
  * Catalogue queries, listing, and the shared text helpers everything else uses.
@@ -49,10 +56,11 @@ export function search(field: string, op: string, value: string, options: Search
 	const rows: string[] = [];
 	for (const offering of matched) {
 		// what this offering costs the person running the search
-		let price = offering.fee;
-		if (!options.resident) price = price * 1.25;
-		price = Math.round(price * 1.05 * 100) / 100;
-
+		// let price = offering.fee;
+		// if (!options.resident) price = price * NON_RESIDENT_SURCHARGE;
+		// price = Math.round(price * TAX_RATE * MODERNIZATION_LEVY * CENTS_PER_DOLLAR) / CENTS_PER_DOLLAR;
+		const price = new QuotePrice(offering.fee, options.resident).calculate();
+		
 		const centre = findCentre(offering.centreId);
 		rows.push(
 			pad(offering.id, 10) +
