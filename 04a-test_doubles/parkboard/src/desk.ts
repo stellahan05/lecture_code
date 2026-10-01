@@ -13,21 +13,24 @@ const SEASON_STARTS: Record<string, string> = {
 const MS_PER_DAY = 24 * 60 * 60 * 1000;
 const LAST_CALL_DAYS = 7;
 
-export function printStatus(offeringId: string): void {
+export function messageFor(offeringId: string, today: Date): string {
 	const offering = findOffering(offeringId);
 	if (offering === undefined) {
-		console.log(`no offering '${offeringId}'`);
-		return;
+		return `no offering '${offeringId}'`;
 	}
 
-	const daysLeft = Math.ceil((Date.parse(SEASON_STARTS[offering.season]) - Date.now()) / MS_PER_DAY);
+	const daysLeft = Math.ceil((Date.parse(SEASON_STARTS[offering.season]) - today.getTime()) / MS_PER_DAY);
 	if (daysLeft <= 0) {
-		console.log(`${offering.id} has already started`);
+		return `${offering.id} has already started`;
 	} else if (offering.isFull()) {
-		console.log(`${offering.id} is full`);
+		return `${offering.id} is full`;
 	} else if (daysLeft <= LAST_CALL_DAYS) {
-		console.log(`${offering.id} starts in ${daysLeft} days — register now`);
+		return `${offering.id} starts in ${daysLeft} days — register now`;
 	} else {
-		console.log(`${offering.id} is open`);
+		return `${offering.id} is open`;
 	}
+}
+
+export function printStatus(offeringId: string): void {
+	console.log(messageFor(offeringId, new Date()));
 }
