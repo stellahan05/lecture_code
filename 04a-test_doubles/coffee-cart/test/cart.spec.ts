@@ -2,6 +2,7 @@ import { expect } from "chai";
 import { buyCoffee, IReader } from "../src/cart";
 
 class ApprovingReader implements IReader {
+	public charged: number[] = [];
 	charge(price: number): boolean {
 		this.charged.push(price);
 		return true;
@@ -16,7 +17,7 @@ class RejectingReader implements IReader {
 
 describe("buyCoffee", () => {
 	it("serves coffee when the card is charged", () => {
-		const reader = n ew ApprovingReader();
+		const reader = new ApprovingReader();
 		expect(buyCoffee(reader, "iced")).to.equal("enjoy your coffee");
 		expect(reader.charged).to.deep.equal([500]);
 	});
