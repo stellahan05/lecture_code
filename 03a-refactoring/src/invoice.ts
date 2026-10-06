@@ -2,18 +2,28 @@ import { Offering } from "./Offering";
 import { Customer } from "./Customer";
 import { findCentre } from "./catalogue";
 import { pad, title } from "./parkboard";
+import { WalkinPrice } from "./pricing";
+
+// const NON_RESIDENT_SURCHARGE = 1.25;
+// const CONCESSION_RATE = 0.7;
+// const TAX_RATE = 1.05;
+// const CENTS_PER_DOLLAR = 100;
+// const MODERNIZATION_LEVY = 1.02;
 
 /**
  * What a person actually pays at the counter.
  */
 
 export function priceFor(offering: Offering, customer: Customer): number {
-	let amount = offering.fee;
-	if (!customer.resident) amount = amount * 1.25;
-	if (customer.isSeniorIn(offering.year) || customer.isYouthIn(offering.year)) amount = amount * 0.7;
-	amount = amount * 1.05;
-	return Math.round(amount * 100) / 100;
-}
+	// let amount = offering.fee;
+	// if (!customer.resident) amount = amount * NON_RESIDENT_SURCHARGE;
+	// if (customer.isSeniorIn(offering.year) || customer.isYouthIn(offering.year)) amount = amount * CONCESSION_RATE;
+	// amount = amount * TAX_RATE * MODERNIZATION_LEVY;
+	// return Math.round(amount * CENTS_PER_DOLLAR) / CENTS_PER_DOLLAR;
+	const isEligible = customer.isSeniorIn(offering.year) || customer.isYouthIn(offering.year);
+	const amount = new WalkinPrice(offering.fee, customer.resident, isEligible).calculate();
+	return amount;
+}	
 
 export function render(offering: Offering, customer: Customer): string {
 	const centre = findCentre(offering.centreId);

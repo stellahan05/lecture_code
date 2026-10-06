@@ -1,6 +1,6 @@
 export class Customer {
 	public interests: string[];
-	public status: string;
+	// public status: string;
 	constructor(
 		public id: string,
 		public name: string,
@@ -8,7 +8,7 @@ export class Customer {
 		public resident: boolean
 	) {
 		this.interests = [];
-		this.status = "Default";
+		// this.status = "Default";
 	}
 
 	public role(): string {
@@ -29,5 +29,22 @@ export class Customer {
 
 	public label(): string {
 		return `${this.name} (${this.role()})`;
+	}
+
+	public get status(): string {
+		if (this.interests.length >= 5) {
+			return "Community Champion";
+		} else if (this.interests.length == 4) {
+			return "Community Enthusiast";
+		} else if (this.interests.length == 3) {
+			return "Frequent Customer";
+		}
+		return "Default";
+	}
+
+	public recordCategory(category: string): void {
+		if (!this.interests.includes(category)) {
+			this.interests.push(category);
+		}
 	}
 }
