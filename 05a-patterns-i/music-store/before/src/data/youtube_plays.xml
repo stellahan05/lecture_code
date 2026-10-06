@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<videos>
+  <video videoId="yt-001">
+    <title>Anti-Hero (Music Video)</title>
+    <channel>Taylor Swift</channel>
+    <views>314</views>
+    <category>Pop</category>
+  </video>
+  <video videoId="yt-002">
+    <title>Not Like Us</title>
+    <channel>Kendrick Lamar</channel>
+    <views>278</views>
+    <category>Hip-Hop</category>
+  </video>
+  <video videoId="yt-003">
+    <title>bad guy (Official Video)</title>
+    <channel>Billie Eilish</channel>
+    <views>203</views>
+    <category>Alternative</category>
+  </video>
+  <video videoId="yt-004">
+    <title>Blinding Lights</title>
+    <channel>The Weeknd</channel>
+    <views>189</views>
+    <category>R&amp;B</category>
+  </video>
+  <video videoId="yt-005">
+    <title>vampire (Official Video)</title>
+    <channel>Olivia Rodrigo</channel>
+    <views>261</views>
+    <category>Pop Rock</category>
+  </video>
+  <video videoId="yt-006">
+    <title>Cruel Summer (Live)</title>
+    <channel>Taylor Swift</channel>
+    <views>198</views>
+    <category>Pop</category>
+  </video>
+  <video videoId="yt-007">
+    <title>Espresso</title>
+    <channel>Sabrina Carpenter</channel>
+    <views>245</views>
+    <category>Pop</category>
+  </video>
+  <video videoId="yt-008">
+    <title>HUMBLE.</title>
+    <channel>Kendrick Lamar</channel>
+    <views>167</views>
+    <category>Hip-Hop</category>
+  </video>
+</videos>

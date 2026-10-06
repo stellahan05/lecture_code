@@ -1,0 +1,12 @@
+{
+  "name": "coffee-cart-adapter",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
+}

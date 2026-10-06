@@ -1,0 +1,137 @@
+[
+  {
+    "stream_id": "sp-001",
+    "track": "Anti-Hero",
+    "artist_name": "Taylor Swift",
+    "play_count": 847,
+    "metadata": {
+      "genre": "Pop"
+    }
+  },
+  {
+    "stream_id": "sp-002",
+    "track": "Shake It Off",
+    "artist_name": "Taylor Swift",
+    "play_count": 612,
+    "metadata": {
+      "genre": "Pop"
+    }
+  },
+  {
+    "stream_id": "sp-003",
+    "track": "Cruel Summer",
+    "artist_name": "Taylor Swift",
+    "play_count": 923,
+    "metadata": {
+      "genre": "Pop"
+    }
+  },
+  {
+    "stream_id": "sp-004",
+    "track": "HUMBLE.",
+    "artist_name": "Kendrick Lamar",
+    "play_count": 534,
+    "metadata": {
+      "genre": "Hip-Hop"
+    }
+  },
+  {
+    "stream_id": "sp-005",
+    "track": "Not Like Us",
+    "artist_name": "Kendrick Lamar",
+    "play_count": 761,
+    "metadata": {
+      "genre": "Hip-Hop"
+    }
+  },
+  {
+    "stream_id": "sp-006",
+    "track": "DNA.",
+    "artist_name": "Kendrick Lamar",
+    "play_count": 489,
+    "metadata": {
+      "genre": "Hip-Hop"
+    }
+  },
+  {
+    "stream_id": "sp-007",
+    "track": "Happier Than Ever",
+    "artist_name": "Billie Eilish",
+    "play_count": 678,
+    "metadata": {
+      "genre": "Alternative"
+    }
+  },
+  {
+    "stream_id": "sp-008",
+    "track": "Bad Guy",
+    "artist_name": "Billie Eilish",
+    "play_count": 745,
+    "metadata": {
+      "genre": "Alternative"
+    }
+  },
+  {
+    "stream_id": "sp-009",
+    "track": "Flowers",
+    "artist_name": "Miley Cyrus",
+    "play_count": 432,
+    "metadata": {
+      "genre": "Pop"
+    }
+  },
+  {
+    "stream_id": "sp-010",
+    "track": "Levitating",
+    "artist_name": "Dua Lipa",
+    "play_count": 521,
+    "metadata": {
+      "genre": "Pop"
+    }
+  },
+  {
+    "stream_id": "sp-011",
+    "track": "Blinding Lights",
+    "artist_name": "The Weeknd",
+    "play_count": 634,
+    "metadata": {
+      "genre": "R&B"
+    }
+  },
+  {
+    "stream_id": "sp-012",
+    "track": "Save Your Tears",
+    "artist_name": "The Weeknd",
+    "play_count": 498,
+    "metadata": {
+      "genre": "R&B"
+    }
+  },
+  {
+    "stream_id": "sp-013",
+    "track": "As It Was",
+    "artist_name": "Harry Styles",
+    "play_count": 389,
+    "metadata": {
+      "genre": "Pop"
+    }
+  },
+  {
+    "stream_id": "sp-014",
+    "track": "Watermelon Sugar",
+    "artist_name": "Harry Styles",
+    "play_count": 312,
+    "metadata": {
+      "genre": "Pop"
+    }
+  },
+  {
+    "stream_id": "sp-015",
+    "track": "good 4 u",
+    "artist_name": "Olivia Rodrigo",
+    "play_count": 567,
+    "metadata": {
+      "genre": "Pop Rock"
+    }
+  }
+]
