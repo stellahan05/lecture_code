@@ -1,11 +1,19 @@
 import { SpotifyClient } from "./vendor/spotify";
 import { AppleMusicLibrary } from "./vendor/appleMusic";
+import { MusicRecord, MusicSource } from "./MusicSource";
+import { YouTubeMusicApi } from "./vendor/youtubeMusic";
 
 export class MyWrapped {
+	private _sources: MusicSource[];
 	constructor(
-		private spotify: SpotifyClient,
-		private appleMusic: AppleMusicLibrary
-	) {}
+		sources: MusicSource[]
+	) {
+		this._sources = sources;
+	}
+
+	private allPlays(): MusicRecord[] {
+		return this._sources.flatMap((source) => source.getRecords());
+	}
 
 	reportTopArtists(): void {
 		console.log("=".repeat(60));
@@ -14,17 +22,10 @@ export class MyWrapped {
 
 		const counts: Record<string, number> = {};
 
-		// ─── Spotify plays ──────────────────────────────────────────────────────
-		for (const play of this.spotify.getStreamHistory()) {
-			const artist = "Weird Al"; // TODO: fill in with the actual artist from the record!
-			const streams = play.play_count;
-			counts[artist] = (counts[artist] ?? 0) + streams;
-		}
-
-		// ─── Apple Music plays ──────────────────────────────────────────────────
-		for (const play of this.appleMusic.exportLibrary()) {
-			const artist = "Weird Al"; // TODO: fill in with the actual artist from the record!
-			const streams = parseInt(play.Streams, 10);
+		// ─── All plays ──────────────────────────────────────────────────────
+		for (const play of this.allPlays()) {
+			const artist = play.artist; // TODO: fill in with the actual artist from the record!
+			const streams = play.streams;
 			counts[artist] = (counts[artist] ?? 0) + streams;
 		}
 
@@ -45,19 +46,13 @@ export class MyWrapped {
 
 		const counts: Record<string, number> = {};
 
-		// ─── Spotify plays ──────────────────────────────────────────────────────
-		for (const play of this.spotify.getStreamHistory()) {
-			const genre = "Unknown"; // TODO: fill in with the actual genre!
-			const streams = play.play_count;
+		// ─── All plays ──────────────────────────────────────────────────────
+		for (const play of this.allPlays()) {
+			const genre = play.genre; // TODO: fill in with the actual genre!
+			const streams = play.streams;
 			counts[genre] = (counts[genre] ?? 0) + streams;
 		}
 
-		// ─── Apple Music plays ──────────────────────────────────────────────────
-		for (const play of this.appleMusic.exportLibrary()) {
-			const genre = "Unknown"; // TODO: fill in with the actual genre from the record!
-			const streams = parseInt(play.Streams, 10);
-			counts[genre] = (counts[genre] ?? 0) + streams;
-		}
 
 		const top5 = Object.entries(counts)
 			.sort((a, b) => b[1] - a[1])
